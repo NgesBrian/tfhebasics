@@ -1,1 +1,7 @@
+tfhe-rs
 tfhe-rs/*
+tfhe-rs*
+.keys
+concrete-ml*
+concrete-ml/*
+concrete-ml
