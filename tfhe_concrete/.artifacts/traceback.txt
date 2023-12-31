@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/compilation/compiler.py", line 447, in compile
+    self._evaluate("Compiling", inputset)
+  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/compilation/compiler.py", line 292, in _evaluate
+    self._trace(first_sample)
+  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/compilation/compiler.py", line 220, in _trace
+    self.graph = Tracer.trace(self.function, parameters)
+  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/tracing/tracer.py", line 81, in trace
+    output_tracers: Any = function(**arguments)
+  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/ml/common/utils.py", line 1, in _clear_forward_proxy
+    """Utils that can be re-used by other pieces of code in the module."""
+  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/ml/quantization/quantized_module.py", line 442, in _clear_forward
+    _raise_qat_import_error(bad_qat_ops)
+  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/ml/quantization/quantized_module.py", line 43, in _raise_qat_import_error
+    raise ValueError(
+ValueError: Error occurred during quantization aware training (QAT) import: The following tensors were expected to be quantized, but the values found during calibration do not appear to be quantized. 
+
+* Tensor input.1, input of an Conv operation
+
+Could not determine a unique scale for the quantization! Please check the ONNX graph of this model.
