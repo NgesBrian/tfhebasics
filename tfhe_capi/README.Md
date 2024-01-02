@@ -12,3 +12,7 @@ change
 
 then
  run the commands on the website. 
+    mkdir build && cd build
+    cmake .. -DCMAKE_BUILD_TYPE=RELEASE
+    make
+    ./my-executable
