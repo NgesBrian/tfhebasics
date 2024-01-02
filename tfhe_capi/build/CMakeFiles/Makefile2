@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/local/ASURITE/nnjungle/Documents/FHE/tfhe_capi
+CMAKE_SOURCE_DIR = /home/local/ASURITE/nnjungle/Documents/FHE/tfhebasics/tfhe_capi
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/local/ASURITE/nnjungle/Documents/FHE/tfhe_capi/build
+CMAKE_BINARY_DIR = /home/local/ASURITE/nnjungle/Documents/FHE/tfhebasics/tfhe_capi/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -81,14 +81,14 @@ clean: CMakeFiles/my-executable.dir/clean
 CMakeFiles/my-executable.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/my-executable.dir/build.make CMakeFiles/my-executable.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/my-executable.dir/build.make CMakeFiles/my-executable.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/local/ASURITE/nnjungle/Documents/FHE/tfhe_capi/build/CMakeFiles --progress-num=1,2 "Built target my-executable"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/local/ASURITE/nnjungle/Documents/FHE/tfhebasics/tfhe_capi/build/CMakeFiles --progress-num=1,2 "Built target my-executable"
 .PHONY : CMakeFiles/my-executable.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/my-executable.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/local/ASURITE/nnjungle/Documents/FHE/tfhe_capi/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/local/ASURITE/nnjungle/Documents/FHE/tfhebasics/tfhe_capi/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/my-executable.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/local/ASURITE/nnjungle/Documents/FHE/tfhe_capi/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/local/ASURITE/nnjungle/Documents/FHE/tfhebasics/tfhe_capi/build/CMakeFiles 0
 .PHONY : CMakeFiles/my-executable.dir/rule
 
 # Convenience name for target.

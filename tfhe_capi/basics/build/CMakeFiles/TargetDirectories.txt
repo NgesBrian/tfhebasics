@@ -1,3 +1,0 @@
-/home/local/ASURITE/nnjungle/Documents/FHE/tfhebasics/tfhe_capi/basics/build/CMakeFiles/my-executable.dir
-/home/local/ASURITE/nnjungle/Documents/FHE/tfhebasics/tfhe_capi/basics/build/CMakeFiles/edit_cache.dir
-/home/local/ASURITE/nnjungle/Documents/FHE/tfhebasics/tfhe_capi/basics/build/CMakeFiles/rebuild_cache.dir

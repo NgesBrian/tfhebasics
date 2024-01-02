@@ -2,7 +2,7 @@ project(my-project)
 
 cmake_minimum_required(VERSION 3.16)
 
-set(TFHE_C_API "/path/to/tfhe-rs/binaries/and/header")
+set(TFHE_C_API "./tfhe-rs/tfhe/src")
 
 include_directories(${TFHE_C_API})
 add_library(tfhe STATIC IMPORTED)

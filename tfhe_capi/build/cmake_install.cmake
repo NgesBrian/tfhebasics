@@ -1,4 +1,4 @@
-# Install script for directory: /home/local/ASURITE/nnjungle/Documents/FHE/tfhe_capi
+# Install script for directory: /home/local/ASURITE/nnjungle/Documents/FHE/tfhebasics/tfhe_capi
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/local/ASURITE/nnjungle/Documents/FHE/tfhe_capi/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/local/ASURITE/nnjungle/Documents/FHE/tfhebasics/tfhe_capi/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

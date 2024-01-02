@@ -6,3 +6,4 @@ concrete-ml*
 concrete-ml/*
 concrete-ml
 data
+tfhe_capi/tfhe-rs

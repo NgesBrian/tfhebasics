@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = 
 
-C_INCLUDES = -I/path/to/tfhe-rs/binaries/and/header -I/home/local/ASURITE/nnjungle/Documents/FHE/tfhe_capi
+C_INCLUDES = -I/home/local/ASURITE/nnjungle/Documents/FHE/tfhebasics/tfhe_capi/./tfhe-rs/tfhe/src -I/home/local/ASURITE/nnjungle/Documents/FHE/tfhebasics/tfhe_capi
 
 C_FLAGS = -O3 -DNDEBUG -Werror
 

@@ -1,1 +1,0 @@
-/usr/bin/cc -O3 -DNDEBUG CMakeFiles/my-executable.dir/main.c.o -o my-executable  /path/to/tfhe-rs/binaries/and/header/libtfhe.a -lm -lpthread -ldl 
