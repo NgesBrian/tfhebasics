@@ -9,3 +9,6 @@ To compile the C-API
 create the MakeLists.txt and copy content
 change 
     set(TFHE_C_API "./tfhe-rs/target/release")
+
+then
+ run the commands on the website. 
