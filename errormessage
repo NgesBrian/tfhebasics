@@ -1,0 +1,71 @@
+I am new to concrete and I will like to train a small CNN with MNIST dataset. 
+I have reproduced some concrete turorials from the website. 
+
+I have created a simple ConvolutionalNueralNet class and I have trained the model on MNIST.
+
+Following the same data structure, compilation and inferencing from Concrete's Neural Network tutorial, I use 
+
+q_module = compile_torch_model(
+    net, 
+    x_train, 
+    rounding_threshold_bits=6, 
+    p_error=0.1, 
+    verbose=True,
+    configuration=None
+)
+
+to compile the model. The compilation process fails with an assertion Error,
+   "AssertionError: Got the following unknown attributes: count_include_pad. Accepted attributes: ceil_mode, kernel_shape, pads, strides."
+
+My Dataset module;
+
+train_dataset = torchvision.datasets.MNIST(root='./data', 
+                                        train=True,
+                                        download=True,
+                                        transform=transform
+                                        )
+
+mnist_features = train_dataset.data.numpy().reshape(-1, 28, 28)
+mnist_labels = train_dataset.targets.numpy()
+
+# Reshape and expand dimensions to match the structure of load_digits dataset
+x_train_mnist = np.expand_dims(mnist_features, 1)
+
+x_train, x_test, y_train, y_test = train_test_split(
+    x_train_mnist, mnist_labels,  train_size=1200, test_size=1000, shuffle=True, random_state=42
+)
+
+x_train = x_train.astype('float64')
+
+My Network looks like; 
+
+class ConvolutionalNeuralNet(nn.Module):
+    def __init__(self, n_classes) -> None:
+        """Construct the CNN with a configurable number of classes."""
+        super().__init__()
+
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=3)
+        self.pool = nn.AvgPool2d(kernel_size=2, stride=2)
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=3)
+        self.conv3 = nn.Conv2d(64, 64, kernel_size=3)
+        self.fc1 = nn.Linear(64 * 3 * 3, 64)
+        self.fc2 = nn.Linear(64, n_classes)
+
+    def forward(self, x):
+        X= self.conv1(x)
+        x = functional.relu(X)
+        x = self.pool(x)
+        X= self.conv2(x)
+        x = functional.relu(X)
+        x = self.pool(x)
+        X = self.conv3(x)
+        x = functional.relu(X)
+        x = torch.flatten(x, 1)
+        #x = x.view(-1, 64 * 3 * 3)
+        X = self.fc1(x)
+        x = functional.relu(X)
+        x = self.fc2(x)
+        return x
+     
+Attached here is a python file with my code
+I will be glad if I can get any help in understanding the error and coming up with a fix as I have ran out of ideas.
