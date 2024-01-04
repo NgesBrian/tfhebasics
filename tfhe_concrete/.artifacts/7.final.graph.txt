@@ -1,24 +1,24 @@
  %0 = _input_1                                                                                                       # EncryptedTensor<uint8, shape=(1, 1, 28, 28)>         ∈ [0, 255]
- %1 = [[[[ -93   ... 8   24]]]]                                                                                      # ClearTensor<int8, shape=(32, 1, 3, 3)>               ∈ [-119, 127]              @ /conv1/Conv.conv
- %2 = conv2d(%0, %1, [0 0 0 0 0 ... 0 0 0 0 0], pads=[0, 0, 0, 0], strides=(1, 1), dilations=(1, 1), group=1)        # EncryptedTensor<int18, shape=(1, 32, 26, 26)>        ∈ [-78539, 85094]          @ /conv1/Conv.conv
- %3 = round_bit_pattern(%2, lsbs_to_remove=12)                                                                       # EncryptedTensor<int18, shape=(1, 32, 26, 26)>        ∈ [-77824, 86016]          @ /conv1/Conv.conv_rounding
+ %1 = [[[[  19   ... 3   46]]]]                                                                                      # ClearTensor<int8, shape=(32, 1, 3, 3)>               ∈ [-127, 126]              @ /conv1/Conv.conv
+ %2 = conv2d(%0, %1, [0 0 0 0 0 ... 0 0 0 0 0], pads=[0, 0, 0, 0], strides=(1, 1), dilations=(1, 1), group=1)        # EncryptedTensor<int18, shape=(1, 32, 26, 26)>        ∈ [-80325, 84918]          @ /conv1/Conv.conv
+ %3 = round_bit_pattern(%2, lsbs_to_remove=12)                                                                       # EncryptedTensor<int18, shape=(1, 32, 26, 26)>        ∈ [-81920, 86016]          @ /conv1/Conv.conv_rounding
  %4 = subgraph(%3)                                                                                                   # EncryptedTensor<uint8, shape=(1, 32, 26, 26)>        ∈ [0, 255]
- %5 = [[[[ 29    ... -4  14]]]]                                                                                      # ClearTensor<int8, shape=(64, 32, 3, 3)>              ∈ [-127, 56]               @ /conv2/Conv.conv
- %6 = conv2d(%4, %5, [0 0 0 0 0 ... 0 0 0 0 0], pads=[0, 0, 0, 0], strides=(1, 1), dilations=(1, 1), group=1)        # EncryptedTensor<int19, shape=(1, 64, 24, 24)>        ∈ [-249982, 146665]        @ /conv2/Conv.conv
- %7 = round_bit_pattern(%6, lsbs_to_remove=13)                                                                       # EncryptedTensor<int19, shape=(1, 64, 24, 24)>        ∈ [-253952, 147456]        @ /conv2/Conv.conv_rounding
+ %5 = [[[[-22 -3 ... 19 -10]]]]                                                                                      # ClearTensor<int8, shape=(64, 32, 3, 3)>              ∈ [-127, 122]              @ /conv2/Conv.conv
+ %6 = conv2d(%4, %5, [0 0 0 0 0 ... 0 0 0 0 0], pads=[0, 0, 0, 0], strides=(1, 1), dilations=(1, 1), group=1)        # EncryptedTensor<int20, shape=(1, 64, 24, 24)>        ∈ [-327536, 283154]        @ /conv2/Conv.conv
+ %7 = round_bit_pattern(%6, lsbs_to_remove=14)                                                                       # EncryptedTensor<int20, shape=(1, 64, 24, 24)>        ∈ [-327680, 278528]        @ /conv2/Conv.conv_rounding
  %8 = subgraph(%7)                                                                                                   # EncryptedTensor<uint8, shape=(1, 64, 24, 24)>        ∈ [0, 255]
- %9 = [[[[  1    ...  1  11]]]]                                                                                      # ClearTensor<int8, shape=(64, 64, 3, 3)>              ∈ [-127, 74]               @ /conv3/Conv.conv
-%10 = conv2d(%8, %9, [0 0 0 0 0 ... 0 0 0 0 0], pads=[0, 0, 0, 0], strides=(3, 3), dilations=(1, 1), group=1)        # EncryptedTensor<int20, shape=(1, 64, 8, 8)>          ∈ [-391583, 207202]        @ /conv3/Conv.conv
-%11 = round_bit_pattern(%10, lsbs_to_remove=14)                                                                      # EncryptedTensor<int20, shape=(1, 64, 8, 8)>          ∈ [-393216, 212992]        @ /conv3/Conv.conv_rounding
-%12 = subgraph(%11)                                                                                                  # EncryptedTensor<uint8, shape=(1, 64, 8, 8)>          ∈ [0, 255]
-%13 = reshape(%12, newshape=(1, 4096))                                                                               # EncryptedTensor<uint8, shape=(1, 4096)>              ∈ [0, 255]
-%14 = subgraph(%13)                                                                                                  # EncryptedTensor<uint8, shape=(1, 4096)>              ∈ [0, 255]
-%15 = [[  2   4  ...   -2   8]]                                                                                      # ClearTensor<int8, shape=(4096, 64)>                  ∈ [-127, 103]              @ /fc1/Gemm.matmul
-%16 = matmul(%14, %15)                                                                                               # EncryptedTensor<int20, shape=(1, 64)>                ∈ [-301860, 273945]        @ /fc1/Gemm.matmul
-%17 = round_bit_pattern(%16, lsbs_to_remove=14)                                                                      # EncryptedTensor<int20, shape=(1, 64)>                ∈ [-294912, 278528]        @ /fc1/Gemm.matmul_rounding
+ %9 = [[[[-127   ... 6    7]]]]                                                                                      # ClearTensor<int8, shape=(64, 64, 3, 3)>              ∈ [-127, 100]              @ /conv3/Conv.conv
+%10 = conv2d(%8, %9, [0 0 0 0 0 ... 0 0 0 0 0], pads=[0, 0, 0, 0], strides=(3, 3), dilations=(1, 1), group=1)        # EncryptedTensor<int20, shape=(1, 64, 8, 8)>          ∈ [-310435, 218330]        @ /conv3/Conv.conv
+%11 = round_bit_pattern(%10, lsbs_to_remove=14)                                                                      # EncryptedTensor<int20, shape=(1, 64, 8, 8)>          ∈ [-311296, 212992]        @ /conv3/Conv.conv_rounding
+%12 = subgraph(%11)                                                                                                  # EncryptedTensor<uint8, shape=(1, 64, 8, 8)>          ∈ [0, 254]
+%13 = reshape(%12, newshape=(1, 4096))                                                                               # EncryptedTensor<uint8, shape=(1, 4096)>              ∈ [0, 254]
+%14 = subgraph(%13)                                                                                                  # EncryptedTensor<uint8, shape=(1, 4096)>              ∈ [0, 254]
+%15 = [[ -6 -31  ...   -2 -14]]                                                                                      # ClearTensor<int8, shape=(4096, 64)>                  ∈ [-125, 127]              @ /fc1/Gemm.matmul
+%16 = matmul(%14, %15)                                                                                               # EncryptedTensor<int20, shape=(1, 64)>                ∈ [-464946, 330861]        @ /fc1/Gemm.matmul
+%17 = round_bit_pattern(%16, lsbs_to_remove=14)                                                                      # EncryptedTensor<int20, shape=(1, 64)>                ∈ [-458752, 327680]        @ /fc1/Gemm.matmul_rounding
 %18 = subgraph(%17)                                                                                                  # EncryptedTensor<uint8, shape=(1, 64)>                ∈ [0, 255]
-%19 = [[  10   2 ... -40  -39]]                                                                                      # ClearTensor<int8, shape=(64, 10)>                    ∈ [-127, 79]               @ /fc2/Gemm.matmul
-%20 = matmul(%18, %19)                                                                                               # EncryptedTensor<int17, shape=(1, 10)>                ∈ [-64343, 53256]          @ /fc2/Gemm.matmul
+%19 = [[ -39   1 ...  52   58]]                                                                                      # ClearTensor<int8, shape=(64, 10)>                    ∈ [-126, 127]              @ /fc2/Gemm.matmul
+%20 = matmul(%18, %19)                                                                                               # EncryptedTensor<int18, shape=(1, 10)>                ∈ [-64063, 74858]          @ /fc2/Gemm.matmul
 return %20
 
 Subgraphs:
@@ -31,13 +31,13 @@ Subgraphs:
          %3 = add(%1, %2)                      # EncryptedTensor<float64, shape=(1, 32, 26, 26)>
          %4 = [[[[0]]  [ ... ]  [[0]]]]        # ClearTensor<uint1, shape=(1, 32, 1, 1)>
          %5 = subtract(%3, %4)                 # EncryptedTensor<float64, shape=(1, 32, 26, 26)>
-         %6 = 0.0035210216608573134            # ClearScalar<float64>
+         %6 = 0.0033845455627741776            # ClearScalar<float64>
          %7 = multiply(%6, %5)                 # EncryptedTensor<float64, shape=(1, 32, 26, 26)>
-         %8 = [[[[ 0.040 ... 412512]]]]        # ClearTensor<float32, shape=(1, 32, 1, 1)>
+         %8 = [[[[ 0.071 ... 02961 ]]]]        # ClearTensor<float32, shape=(1, 32, 1, 1)>
          %9 = add(%7, %8)                      # EncryptedTensor<float64, shape=(1, 32, 26, 26)>
         %10 = 0                                # ClearScalar<uint1>
         %11 = maximum(%9, %10)                 # EncryptedTensor<float64, shape=(1, 32, 26, 26)>
-        %12 = 1.1763610513291907               # ClearScalar<float64>
+        %12 = 1.1237406253462934               # ClearScalar<float64>
         %13 = divide(%11, %12)                 # EncryptedTensor<float64, shape=(1, 32, 26, 26)>
         %14 = 0                                # ClearScalar<uint1>
         %15 = add(%13, %14)                    # EncryptedTensor<float64, shape=(1, 32, 26, 26)>
@@ -56,13 +56,13 @@ Subgraphs:
          %3 = add(%1, %2)                      # EncryptedTensor<float64, shape=(1, 64, 24, 24)>
          %4 = [[[[0]]  [ ... ]  [[0]]]]        # ClearTensor<uint1, shape=(1, 64, 1, 1)>
          %5 = subtract(%3, %4)                 # EncryptedTensor<float64, shape=(1, 64, 24, 24)>
-         %6 = 0.004955703689136662             # ClearScalar<float64>
+         %6 = 0.0032148731477448394            # ClearScalar<float64>
          %7 = multiply(%6, %5)                 # EncryptedTensor<float64, shape=(1, 64, 24, 24)>
-         %8 = [[[[-0.000 ... 262951]]]]        # ClearTensor<float32, shape=(1, 64, 1, 1)>
+         %8 = [[[[ 0.063 ... 60466 ]]]]        # ClearTensor<float32, shape=(1, 64, 1, 1)>
          %9 = add(%7, %8)                      # EncryptedTensor<float64, shape=(1, 64, 24, 24)>
         %10 = 0                                # ClearScalar<uint1>
         %11 = maximum(%9, %10)                 # EncryptedTensor<float64, shape=(1, 64, 24, 24)>
-        %12 = 2.8376340177715007               # ClearScalar<float64>
+        %12 = 3.4968772209503105               # ClearScalar<float64>
         %13 = divide(%11, %12)                 # EncryptedTensor<float64, shape=(1, 64, 24, 24)>
         %14 = 0                                # ClearScalar<uint1>
         %15 = add(%13, %14)                    # EncryptedTensor<float64, shape=(1, 64, 24, 24)>
@@ -81,13 +81,13 @@ Subgraphs:
          %3 = add(%1, %2)                      # EncryptedTensor<float64, shape=(1, 64, 8, 8)>
          %4 = [[[[0]]  [ ... ]  [[0]]]]        # ClearTensor<uint1, shape=(1, 64, 1, 1)>
          %5 = subtract(%3, %4)                 # EncryptedTensor<float64, shape=(1, 64, 8, 8)>
-         %6 = 0.009192228419825126             # ClearScalar<float64>
+         %6 = 0.009261035404301638             # ClearScalar<float64>
          %7 = multiply(%6, %5)                 # EncryptedTensor<float64, shape=(1, 64, 8, 8)>
-         %8 = [[[[ 0.026 ... 679066]]]]        # ClearTensor<float32, shape=(1, 64, 1, 1)>
+         %8 = [[[[ 0.035 ... 702174]]]]        # ClearTensor<float32, shape=(1, 64, 1, 1)>
          %9 = add(%7, %8)                      # EncryptedTensor<float64, shape=(1, 64, 8, 8)>
         %10 = 0                                # ClearScalar<uint1>
         %11 = maximum(%9, %10)                 # EncryptedTensor<float64, shape=(1, 64, 8, 8)>
-        %12 = 7.464029778967499                # ClearScalar<float64>
+        %12 = 7.752799176460702                # ClearScalar<float64>
         %13 = divide(%11, %12)                 # EncryptedTensor<float64, shape=(1, 64, 8, 8)>
         %14 = 0                                # ClearScalar<uint1>
         %15 = add(%13, %14)                    # EncryptedTensor<float64, shape=(1, 64, 8, 8)>
@@ -103,11 +103,11 @@ Subgraphs:
          %0 = input                          # EncryptedTensor<uint1, shape=(1, 4096)>
          %1 = 0.0                            # ClearScalar<float64>
          %2 = subtract(%0, %1)               # EncryptedTensor<float64, shape=(1, 4096)>
-         %3 = 7.464029778967499              # ClearScalar<float64>
+         %3 = 7.752799176460702              # ClearScalar<float64>
          %4 = multiply(%3, %2)               # EncryptedTensor<float64, shape=(1, 4096)>
          %5 = 0                              # ClearScalar<uint1>
          %6 = maximum(%4, %5)                # EncryptedTensor<float64, shape=(1, 4096)>
-         %7 = 7.464029778967499              # ClearScalar<float64>
+         %7 = 7.752799176460702              # ClearScalar<float64>
          %8 = divide(%6, %7)                 # EncryptedTensor<float64, shape=(1, 4096)>
          %9 = 0                              # ClearScalar<uint1>
         %10 = add(%8, %9)                    # EncryptedTensor<float64, shape=(1, 4096)>
@@ -126,13 +126,13 @@ Subgraphs:
          %3 = add(%1, %2)                      # EncryptedTensor<float64, shape=(1, 64)>
          %4 = [[0 0 0 0  ...  0 0 0 0]]        # ClearTensor<uint1, shape=(1, 64)>
          %5 = subtract(%3, %4)                 # EncryptedTensor<float64, shape=(1, 64)>
-         %6 = 0.020999721834261884             # ClearScalar<float64>
+         %6 = 0.017831922791338904             # ClearScalar<float64>
          %7 = multiply(%6, %5)                 # EncryptedTensor<float64, shape=(1, 64)>
-         %8 = [-0.026818 ... .00357294]        # ClearTensor<float32, shape=(64,)>
+         %8 = [-0.020062 ... .00493813]        # ClearTensor<float32, shape=(64,)>
          %9 = add(%7, %8)                      # EncryptedTensor<float64, shape=(1, 64)>
         %10 = 0                                # ClearScalar<uint1>
         %11 = maximum(%9, %10)                 # EncryptedTensor<float64, shape=(1, 64)>
-        %12 = 22.810754304030795               # ClearScalar<float64>
+        %12 = 22.858811645639566               # ClearScalar<float64>
         %13 = divide(%11, %12)                 # EncryptedTensor<float64, shape=(1, 64)>
         %14 = 0                                # ClearScalar<uint1>
         %15 = add(%13, %14)                    # EncryptedTensor<float64, shape=(1, 64)>
