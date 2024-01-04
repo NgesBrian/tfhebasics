@@ -1,24 +1,24 @@
- %0 = _input_1                                                                                                       # EncryptedTensor<uint8, shape=(1, 1, 28, 28)>
- %1 = [[[[ -93   ... 8   24]]]]                                                                                      # ClearTensor<int8, shape=(32, 1, 3, 3)>                       @ /conv1/Conv.conv
- %2 = conv2d(%0, %1, [0 0 0 0 0 ... 0 0 0 0 0], pads=[0, 0, 0, 0], strides=(1, 1), dilations=(1, 1), group=1)        # EncryptedTensor<uint8, shape=(1, 32, 26, 26)>                @ /conv1/Conv.conv
- %3 = round_bit_pattern(%2, lsbs_to_remove=12)                                                                       # EncryptedTensor<uint8, shape=(1, 32, 26, 26)>                @ /conv1/Conv.conv_rounding
- %4 = subgraph(%3)                                                                                                   # EncryptedTensor<uint1, shape=(1, 32, 26, 26)>
- %5 = [[[[ 29    ... -4  14]]]]                                                                                      # ClearTensor<int8, shape=(64, 32, 3, 3)>                      @ /conv2/Conv.conv
- %6 = conv2d(%4, %5, [0 0 0 0 0 ... 0 0 0 0 0], pads=[0, 0, 0, 0], strides=(1, 1), dilations=(1, 1), group=1)        # EncryptedTensor<uint1, shape=(1, 64, 24, 24)>                @ /conv2/Conv.conv
- %7 = round_bit_pattern(%6, lsbs_to_remove=13)                                                                       # EncryptedTensor<uint1, shape=(1, 64, 24, 24)>                @ /conv2/Conv.conv_rounding
- %8 = subgraph(%7)                                                                                                   # EncryptedTensor<uint1, shape=(1, 64, 24, 24)>
- %9 = [[[[  1    ...  1  11]]]]                                                                                      # ClearTensor<int8, shape=(64, 64, 3, 3)>                      @ /conv3/Conv.conv
-%10 = conv2d(%8, %9, [0 0 0 0 0 ... 0 0 0 0 0], pads=[0, 0, 0, 0], strides=(3, 3), dilations=(1, 1), group=1)        # EncryptedTensor<uint1, shape=(1, 64, 8, 8)>                  @ /conv3/Conv.conv
-%11 = round_bit_pattern(%10, lsbs_to_remove=14)                                                                      # EncryptedTensor<uint1, shape=(1, 64, 8, 8)>                  @ /conv3/Conv.conv_rounding
-%12 = subgraph(%11)                                                                                                  # EncryptedTensor<uint1, shape=(1, 64, 8, 8)>
-%13 = reshape(%12, newshape=(1, 4096))                                                                               # EncryptedTensor<uint1, shape=(1, 4096)>
-%14 = subgraph(%13)                                                                                                  # EncryptedTensor<uint1, shape=(1, 4096)>
-%15 = [[  2   4  ...   -2   8]]                                                                                      # ClearTensor<int8, shape=(4096, 64)>                          @ /fc1/Gemm.matmul
-%16 = matmul(%14, %15)                                                                                               # EncryptedTensor<uint13, shape=(1, 64)>                       @ /fc1/Gemm.matmul
-%17 = round_bit_pattern(%16, lsbs_to_remove=14)                                                                      # EncryptedTensor<uint13, shape=(1, 64)>                       @ /fc1/Gemm.matmul_rounding
-%18 = subgraph(%17)                                                                                                  # EncryptedTensor<uint1, shape=(1, 64)>
-%19 = [[  10   2 ... -40  -39]]                                                                                      # ClearTensor<int8, shape=(64, 10)>                            @ /fc2/Gemm.matmul
-%20 = matmul(%18, %19)                                                                                               # EncryptedTensor<uint7, shape=(1, 10)>                        @ /fc2/Gemm.matmul
+ %0 = _input_1                                                                                                       # EncryptedTensor<uint8, shape=(1, 1, 28, 28)>         ∈ [0, 255]
+ %1 = [[[[ -93   ... 8   24]]]]                                                                                      # ClearTensor<int8, shape=(32, 1, 3, 3)>               ∈ [-119, 127]              @ /conv1/Conv.conv
+ %2 = conv2d(%0, %1, [0 0 0 0 0 ... 0 0 0 0 0], pads=[0, 0, 0, 0], strides=(1, 1), dilations=(1, 1), group=1)        # EncryptedTensor<int18, shape=(1, 32, 26, 26)>        ∈ [-78539, 85094]          @ /conv1/Conv.conv
+ %3 = round_bit_pattern(%2, lsbs_to_remove=12)                                                                       # EncryptedTensor<int18, shape=(1, 32, 26, 26)>        ∈ [-77824, 86016]          @ /conv1/Conv.conv_rounding
+ %4 = subgraph(%3)                                                                                                   # EncryptedTensor<uint8, shape=(1, 32, 26, 26)>        ∈ [0, 255]
+ %5 = [[[[ 29    ... -4  14]]]]                                                                                      # ClearTensor<int8, shape=(64, 32, 3, 3)>              ∈ [-127, 56]               @ /conv2/Conv.conv
+ %6 = conv2d(%4, %5, [0 0 0 0 0 ... 0 0 0 0 0], pads=[0, 0, 0, 0], strides=(1, 1), dilations=(1, 1), group=1)        # EncryptedTensor<int19, shape=(1, 64, 24, 24)>        ∈ [-249982, 146665]        @ /conv2/Conv.conv
+ %7 = round_bit_pattern(%6, lsbs_to_remove=13)                                                                       # EncryptedTensor<int19, shape=(1, 64, 24, 24)>        ∈ [-253952, 147456]        @ /conv2/Conv.conv_rounding
+ %8 = subgraph(%7)                                                                                                   # EncryptedTensor<uint8, shape=(1, 64, 24, 24)>        ∈ [0, 255]
+ %9 = [[[[  1    ...  1  11]]]]                                                                                      # ClearTensor<int8, shape=(64, 64, 3, 3)>              ∈ [-127, 74]               @ /conv3/Conv.conv
+%10 = conv2d(%8, %9, [0 0 0 0 0 ... 0 0 0 0 0], pads=[0, 0, 0, 0], strides=(3, 3), dilations=(1, 1), group=1)        # EncryptedTensor<int20, shape=(1, 64, 8, 8)>          ∈ [-391583, 207202]        @ /conv3/Conv.conv
+%11 = round_bit_pattern(%10, lsbs_to_remove=14)                                                                      # EncryptedTensor<int20, shape=(1, 64, 8, 8)>          ∈ [-393216, 212992]        @ /conv3/Conv.conv_rounding
+%12 = subgraph(%11)                                                                                                  # EncryptedTensor<uint8, shape=(1, 64, 8, 8)>          ∈ [0, 255]
+%13 = reshape(%12, newshape=(1, 4096))                                                                               # EncryptedTensor<uint8, shape=(1, 4096)>              ∈ [0, 255]
+%14 = subgraph(%13)                                                                                                  # EncryptedTensor<uint8, shape=(1, 4096)>              ∈ [0, 255]
+%15 = [[  2   4  ...   -2   8]]                                                                                      # ClearTensor<int8, shape=(4096, 64)>                  ∈ [-127, 103]              @ /fc1/Gemm.matmul
+%16 = matmul(%14, %15)                                                                                               # EncryptedTensor<int20, shape=(1, 64)>                ∈ [-301860, 273945]        @ /fc1/Gemm.matmul
+%17 = round_bit_pattern(%16, lsbs_to_remove=14)                                                                      # EncryptedTensor<int20, shape=(1, 64)>                ∈ [-294912, 278528]        @ /fc1/Gemm.matmul_rounding
+%18 = subgraph(%17)                                                                                                  # EncryptedTensor<uint8, shape=(1, 64)>                ∈ [0, 255]
+%19 = [[  10   2 ... -40  -39]]                                                                                      # ClearTensor<int8, shape=(64, 10)>                    ∈ [-127, 79]               @ /fc2/Gemm.matmul
+%20 = matmul(%18, %19)                                                                                               # EncryptedTensor<int17, shape=(1, 10)>                ∈ [-64343, 53256]          @ /fc2/Gemm.matmul
 return %20
 
 Subgraphs:

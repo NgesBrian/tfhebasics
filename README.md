@@ -14,3 +14,6 @@ quantized_module = compile_torch_model(
     n_bits=n_bits_qat,
 )
 
+QAT can be carried out before or after the training phase. 
+QAT allows weights and activations to be reduced to very low bit-widths which when combined with pruning keeps the accumulator bit-widths low. 
+Concrete-ML uses Brevitas to perform QAT for Pythorch NNs.

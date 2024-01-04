@@ -49,8 +49,7 @@ CMakeFiles/my-executable.dir/main.c.o: \
  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib.h /usr/include/assert.h \
- /usr/include/inttypes.h /usr/include/stdio.h \
- /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
+ /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
