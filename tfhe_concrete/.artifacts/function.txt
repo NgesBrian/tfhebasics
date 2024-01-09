@@ -1,4 +1,0 @@
-@fhe.compiler({"x":"encrypted"})
-def add(x):
-    sum =  x[0][0][0][0] + x[0][0][0][1]
-    return sum
