@@ -1,39 +1,18 @@
 Traceback (most recent call last):
-  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/representation/graph.py", line 178, in evaluate
-    node_results[node] = node(*pred_results)
-  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/representation/node.py", line 216, in __call__
-    result = self.evaluator(*args)
-  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/representation/evaluator.py", line 39, in __call__
-    return self.operation(*args, *self.properties["args"], **self.properties["kwargs"])
-  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/extensions/table.py", line 127, in apply
-    return table[key]
-IndexError: index 4 is out of bounds for axis 0 with size 4
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/representation/graph.py", line 455, in measure_bounds
-    evaluation = self.evaluate(*sample)
-  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/representation/graph.py", line 180, in evaluate
-    raise RuntimeError(
-RuntimeError: Evaluation of the graph failed
-
-%0 = x                                   # EncryptedTensor<uint2, shape=(2, 3)>
-%1 = tlu(%0, table=[ 2 -1  3  0])        # EncryptedTensor<int3, shape=(2, 3)>
-%2 = 1                                   # ClearScalar<uint1>
-%3 = add(%0, %2)                         # EncryptedTensor<uint2, shape=(2, 3)>
-%4 = tlu(%3, table=[ 2 -1  3  0])        # EncryptedTensor<int3, shape=(2, 3)>
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ evaluation of this node failed
-%5 = add(%1, %4)                         # EncryptedTensor<uint2, shape=(2, 3)>
-return %5
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
   File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/compilation/compiler.py", line 447, in compile
     self._evaluate("Compiling", inputset)
-  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/compilation/compiler.py", line 295, in _evaluate
-    bounds = self.graph.measure_bounds(self.inputset)
-  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/representation/graph.py", line 476, in measure_bounds
-    raise RuntimeError(message) from error
-RuntimeError: Bound measurement using inputset[0] failed
+  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/compilation/compiler.py", line 292, in _evaluate
+    self._trace(first_sample)
+  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/compilation/compiler.py", line 220, in _trace
+    self.graph = Tracer.trace(self.function, parameters)
+  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/tracing/tracer.py", line 81, in trace
+    output_tracers: Any = function(**arguments)
+  File "/tmp/ipykernel_475268/2415740621.py", line 9, in network_function
+    pool1 = fhe.maxpool(conv1, kernel_shape=(2, 2), strides=(2, 2), dilations=(1, 1))
+  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/extensions/maxpool.py", line 272, in maxpool
+    return _trace_or_evaluate(x, kernel_shape, strides, pads, dilations, ceil_mode == 1)
+  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/extensions/maxpool.py", line 286, in _trace_or_evaluate
+    result = _evaluate(np.zeros(x.shape), kernel_shape, strides, pads, dilations, ceil_mode == 1)
+  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/extensions/maxpool.py", line 326, in _evaluate
+    evaluator(
+RuntimeError: Given input size: (1x1x1). Calculated output size: (1x0x0). Output size is too small

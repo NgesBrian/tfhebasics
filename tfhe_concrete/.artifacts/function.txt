@@ -1,4 +1,8 @@
 @fhe.compiler({"x": "encrypted"})
-def f(x):
-    sum = table[x] + table[x+1]
-    return sum
+def network_function(x):
+    conv1 =  fhe.conv(x, selected_weights, kernel_shape=(28,28))
+    pool1 = fhe.maxpool(conv1, kernel_shape=(2, 2), strides=(2, 2), dilations=(1, 1))
+    conv2 = fhe.conv(conv1, selected_weights)
+    print(pool1)
+    net_result = pool1
+    return net_result
