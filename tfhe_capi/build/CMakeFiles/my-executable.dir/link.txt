@@ -1,1 +1,1 @@
-/usr/bin/cc -O3 -DNDEBUG CMakeFiles/my-executable.dir/main.c.o -o my-executable  ./tfhe-rs/target/release/libtfhe.a -lm -lpthread -ldl 
+/usr/bin/cc -O3 -DNDEBUG CMakeFiles/my-executable.dir/main.c.o -o my-executable  ../tfhe-rs/target/release/libtfhe.a -lm -lpthread -ldl 

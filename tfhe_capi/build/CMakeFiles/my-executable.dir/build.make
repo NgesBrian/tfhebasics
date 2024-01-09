@@ -92,7 +92,7 @@ my__executable_EXTERNAL_OBJECTS =
 
 my-executable: CMakeFiles/my-executable.dir/main.c.o
 my-executable: CMakeFiles/my-executable.dir/build.make
-my-executable: ./tfhe-rs/target/release/libtfhe.a
+my-executable: ../tfhe-rs/target/release/libtfhe.a
 my-executable: CMakeFiles/my-executable.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/local/ASURITE/nnjungle/Documents/FHE/tfhebasics/tfhe_capi/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable my-executable"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/my-executable.dir/link.txt --verbose=$(VERBOSE)

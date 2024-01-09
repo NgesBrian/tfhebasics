@@ -1,22 +1,4 @@
-@fhe.compiler({"image": "encrypted"})
-def to_grayscale(image):
-    with fhe.tag("scaling.r"):
-        r = image[:, :, 0]
-        r = (r * 0.30).astype(np.int64)
-
-    with fhe.tag("scaling.g"):
-        g = image[:, :, 1]
-        g = (g * 0.59).astype(np.int64)
-
-    with fhe.tag("scaling.b"):
-        b = image[:, :, 2]
-        b = (b * 0.11).astype(np.int64)
-
-    with fhe.tag("combining.rgb"):
-        gray = r + g + b
-        
-    with fhe.tag("creating.result"):
-        gray = np.expand_dims(gray, axis=2)
-        result = np.concatenate((gray, gray, gray), axis=2)
-    
-    return result
+@fhe.compiler({"x":"encrypted"})
+def add(x):
+    sum =  x[0][0][0][0] + x[0][0][0][1]
+    return sum

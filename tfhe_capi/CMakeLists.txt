@@ -2,7 +2,7 @@ project(my-project)
 
 cmake_minimum_required(VERSION 3.16)
 
-set(TFHE_C_API "./tfhe-rs/target/release")
+set(TFHE_C_API "/home/local/ASURITE/nnjungle/Documents/FHE/tfhebasics/tfhe_capi/tfhe-rs/target/release")
 
 include_directories(${TFHE_C_API})
 add_library(tfhe STATIC IMPORTED)
