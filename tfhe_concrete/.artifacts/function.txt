@@ -1,0 +1,4 @@
+@fhe.compiler({"x": "encrypted"})
+def f(x):
+    sum = table[x] + table[x+1]
+    return sum
