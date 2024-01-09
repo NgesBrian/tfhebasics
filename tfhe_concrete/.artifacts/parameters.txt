@@ -1,1 +1,1 @@
-_input_1 :: encrypted
+image :: encrypted

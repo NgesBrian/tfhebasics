@@ -1,12 +1,14 @@
 Traceback (most recent call last):
-  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/compilation/compiler.py", line 538, in compile
-    circuit = Circuit(
-  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/compilation/circuit.py", line 62, in __init__
-    self.enable_fhe_execution()
-  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/compilation/circuit.py", line 95, in enable_fhe_execution
-    self.server = Server.create(
-  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/compilation/server.py", line 194, in create
-    compilation_result = support.compile(mlir, options, compilation_context)
-  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/compiler/library_support.py", line 170, in compile
-    self.cpp().compile(
-RuntimeError: Can't compile: Cannot find crypto parameters
+  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/compilation/compiler.py", line 447, in compile
+    self._evaluate("Compiling", inputset)
+  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/compilation/compiler.py", line 292, in _evaluate
+    self._trace(first_sample)
+  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/compilation/compiler.py", line 220, in _trace
+    self.graph = Tracer.trace(self.function, parameters)
+  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/tracing/tracer.py", line 81, in trace
+    output_tracers: Any = function(**arguments)
+  File "/tmp/ipykernel_415903/2832069659.py", line 4, in to_grayscale
+    r = image[:, :, 0]
+  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/tracing/tracer.py", line 803, in __getitem__
+    output_value.shape = np.zeros(output_value.shape)[index].shape  # type: ignore
+IndexError: too many indices for array: array is 1-dimensional, but 3 were indexed
