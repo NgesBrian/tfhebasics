@@ -1,18 +1,35 @@
 Traceback (most recent call last):
+  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/representation/node.py", line 57, in constant
+    value = ValueDescription.of(constant)
+  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/values/value_description.py", line 100, in of
+    raise ValueError(message)
+ValueError: Concrete cannot represent array([[[[None, None, None, None, None, None, None, None, None, None,
+          None, None, None, None, None, None, None, None, None, None,
+          None, None, None, None]]]], dtype=object)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/tracing/tracer.py", line 100, in trace
+    sanitized_tracers.append(Tracer.sanitize(tracer))
+  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/tracing/tracer.py", line 211, in sanitize
+    computation = Node.constant(value)
+  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/representation/node.py", line 60, in constant
+    raise ValueError(message) from error
+ValueError: Constant array([[[[None, None, None, None, None, None, None, None, None, None,
+          None, None, None, None, None, None, None, None, None, None,
+          None, None, None, None]]]], dtype=object) is not supported
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
   File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/compilation/compiler.py", line 447, in compile
     self._evaluate("Compiling", inputset)
   File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/compilation/compiler.py", line 292, in _evaluate
     self._trace(first_sample)
   File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/compilation/compiler.py", line 220, in _trace
     self.graph = Tracer.trace(self.function, parameters)
-  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/tracing/tracer.py", line 81, in trace
-    output_tracers: Any = function(**arguments)
-  File "/tmp/ipykernel_475268/2415740621.py", line 9, in network_function
-    pool1 = fhe.maxpool(conv1, kernel_shape=(2, 2), strides=(2, 2), dilations=(1, 1))
-  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/extensions/maxpool.py", line 272, in maxpool
-    return _trace_or_evaluate(x, kernel_shape, strides, pads, dilations, ceil_mode == 1)
-  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/extensions/maxpool.py", line 286, in _trace_or_evaluate
-    result = _evaluate(np.zeros(x.shape), kernel_shape, strides, pads, dilations, ceil_mode == 1)
-  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/extensions/maxpool.py", line 326, in _evaluate
-    evaluator(
-RuntimeError: Given input size: (1x1x1). Calculated output size: (1x0x0). Output size is too small
+  File "/home/local/ASURITE/nnjungle/.local/lib/python3.10/site-packages/concrete/fhe/tracing/tracer.py", line 107, in trace
+    raise ValueError(message) from error
+ValueError: Function 'network_function' returned '[[[[None None None None None None None None None None None None None
+    None None None None None None None None None None None]]]]', which is not supported

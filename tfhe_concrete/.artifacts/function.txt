@@ -1,8 +1,15 @@
 @fhe.compiler({"x": "encrypted"})
 def network_function(x):
-    conv1 =  fhe.conv(x, selected_weights, kernel_shape=(28,28))
-    pool1 = fhe.maxpool(conv1, kernel_shape=(2, 2), strides=(2, 2), dilations=(1, 1))
-    conv2 = fhe.conv(conv1, selected_weights)
-    print(pool1)
-    net_result = pool1
+    print("we dey here")
+    x = fhe.conv(x, weight, strides=(1, 1))
+    print("first conv done")
+    x = fhe.conv(x, weight, strides=(1, 1))
+    print("second conv done")
+    # x = fhe.maxpool(x, kernel_shape=(2, 2), strides=(2, 2), dilations=(1, 1))
+    print("maxpool done")
+    x = pbs_function(x)
+    print("pbs_func done")
+    # conv2 = fhe.conv(conv1, selected_weights)
+    # print(pool1)
+    net_result = x
     return net_result
